@@ -52,12 +52,8 @@ function create_cloud_scheduler() {
 function upsert_cloud_function() {
     local topic_name=$1
     local project_id=$2
-    local service_account_name=$3
-
-
-    local project_number=$(gcloud projects list \
-    --filter="project_id:$project_id" \
-    --format='value(project_number)')
+    local project_number=$3
+    local service_account_name=$4
 
   cat <<EOF >.env.yaml
 DATACATALOG_PROJECT_ID: $DATACATALOG_PROJECT_ID
@@ -106,7 +102,11 @@ function main() {
     python3 -m pip install pip-tools
     python3 -m piptools compile --output-file=requirements.txt requirements.in
 
-    upsert_cloud_function $TOPIC_NAME $DATACATALOG_PROJECT_ID $SA_NAME
+    PROJECT_NUMBER=$(gcloud projects list \
+    --filter="project_id:$DATACATALOG_PROJECT_ID" \
+    --format="value(project_number)")
+
+    upsert_cloud_function $TOPIC_NAME $DATACATALOG_PROJECT_ID $PROJECT_NUMBER $SA_NAME
 }
 
 main
