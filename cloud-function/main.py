@@ -54,10 +54,11 @@ def _get_db_credentials():
 
 def _get_secrets_manager_property(property_name):
     client = secretmanager.SecretManagerServiceClient()
-    project_number = os.environ.get('DATACATALOG_PROJECT_NUMBER')
 
-    resource_name = 'projects/{}/secrets/{}/versions/1'.format(
-        project_number, property_name)
-    response = client.access_secret_version(resource_name)
+    project_id = os.environ.get('DATACATALOG_PROJECT_ID')
+
+    secret_path = client.secret_version_path(project_id, property_name, 'latest')
+
+    response = client.access_secret_version(secret_path)
     return response.payload.data.decode('UTF-8')
 

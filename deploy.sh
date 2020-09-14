@@ -57,7 +57,7 @@ function upsert_cloud_function() {
 
   cat <<EOF >.env.yaml
 DATACATALOG_PROJECT_ID: $DATACATALOG_PROJECT_ID
-DATACATALOG_PROJECT_NUMBER: $project_number
+DATACATALOG_PROJECT_NUMBER: "$project_number"
 DATACATALOG_LOCATION_ID: $DATACATALOG_LOCATION_ID
 DB_CREDENTIALS_USER_SECRET: $DB_CREDENTIALS_USER_SECRET
 DB_CREDENTIALS_PASS_SECRET: $DB_CREDENTIALS_PASS_SECRET
@@ -99,7 +99,7 @@ function main() {
     echo -e "\033[1;42m [LAST STEP] Upsert Cloud Function \033[0m"
 
     # Update requirements.txt
-    python3 -m pip install pip-tools
+    python3 -m pip install pip-tools --user
     python3 -m piptools compile --output-file=requirements.txt requirements.in
 
     PROJECT_NUMBER=$(gcloud projects list \

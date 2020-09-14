@@ -24,5 +24,6 @@ echo -e "\033[1;42m [STEP 2] Creating secret \033[0m"
 
 echo -n $value | \
     gcloud beta secrets create $name \
+      --project $PROJECT_ID\
       --data-file=- \
       --replication-policy automatic
