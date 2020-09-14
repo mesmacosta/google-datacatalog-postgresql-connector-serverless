@@ -13,7 +13,7 @@ A package that shows how to set up the DataCatalog PostgreSQL connector in a ser
   Please stick to 80-character line wraps as much as you can.
 -->
 
-![N|Solid](./docs/architecture.png "architecture")
+![N|Solid](./docs/architecture_01.png "architecture")
 
 ## Table of Contents
 
