@@ -27,7 +27,7 @@ A package that shows how to set up the DataCatalog PostgreSQL connector in a ser
   * [1.3. Deploy Cloud Function and Cloud Scheduler](#13-deploy-cloud-function-and-cloud-scheduler)
     + [1.3.1 Set environment variables](#131-set-environment-variables)
     + [1.3.2 Run script](#132-run-script)
-  * [1.4. In case you just want to Update the Cloud Function](#14-in-case-you-just-want-to-update-the-cloud-function)
+  * [1.4. Update the Cloud Function](#14-update-the-cloud-function)
     + [1.4.1 Set environment variables](#141-set-environment-variables)
     + [1.4.2 Run script](#142-run-script)
 
@@ -87,7 +87,7 @@ export POSTGRES_DB=postgres
 ./deploy.sh
 ```
 
-### 1.4. In case you just want to Update the Cloud Function
+### 1.4. Update the Cloud Function
 
 #### 1.4.1 Set environment variables
 
